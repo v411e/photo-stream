@@ -3,4 +3,18 @@
     {{ $photos := sort (.Resources.ByType "image") (index .Params "sort_by" |default "Exif.Date") "desc" }}
     {{- partial "photos.html" $photos -}}
 </ul>
+<ul class="links bottom">
+    {{ if ne (os.Getenv "GITHUB_USERNAME") "" }}
+    <li class="github"><a rel="me" href="https://github.com/{{os.Getenv "GITHUB_USERNAME"}}" title="@{{os.Getenv "GITHUB_USERNAME"}} on Github">Github</a></li>
+    {{ end }}
+    {{ if ne (os.Getenv "TWITTER_USERNAME") "" }}
+    <li class="twitter"><a rel="me" href="https://twitter.com/{{os.Getenv "TWITTER_USERNAME"}}" title="@{{os.Getenv "TWITTER_USERNAME"}} on Twitter">Twitter</a></li>
+    {{ end }}
+    {{ if ne (os.Getenv "INSTAGRAM_USERNAME") "" }}
+    <li class="instagram"><a rel="me" href="https://instagram.com/{{os.Getenv "INSTAGRAM_USERNAME"}}" title="@{{os.Getenv "INSTAGRAM_USERNAME"}} on Instagram">Instagram</a></li>
+    {{ end }}
+    {{ if and (ne (os.Getenv "CUSTOM_LINK_URL") "") (ne (os.Getenv "CUSTOM_LINK_NAME") "")}}
+    <li class="link"><a rel="me" href="{{os.Getenv "CUSTOM_LINK_URL"}}" title="{{os.Getenv "CUSTOM_LINK_NAME"}}">{{os.Getenv "CUSTOM_LINK_NAME"}}</a></li>
+    {{ end }}
+</ul>
 {{ end }}

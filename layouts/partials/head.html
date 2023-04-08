@@ -16,7 +16,8 @@
     <link rel="canonical" href="{{ .Permalink }}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    
+    <meta name="google" content="notranslate" />
+
     <!-- RSS Link -->
     {{ range .AlternativeOutputFormats -}}
         {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}

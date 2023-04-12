@@ -5,45 +5,46 @@ const UP = 38;
 const DOWN = 40;
 const TARGET_CLASS = 'target';
 
-/*
- * swipe detection
- *
- * found at: https://stackoverflow.com/a/23230280
- */
-document.addEventListener('touchstart', handleTouchStart, false);
-document.addEventListener('touchmove', handleTouchMove, false);
+// Disabling swipe detection for now, as it does not work reliable together with zoom gestures
+// /*
+//  * swipe detection
+//  *
+//  * found at: https://stackoverflow.com/a/23230280
+//  */
+// document.addEventListener('touchstart', handleTouchStart, false);
+// document.addEventListener('touchmove', handleTouchMove, false);
 
-var xDown = null;
+// var xDown = null;
 
-function getTouches(evt) {
-  return evt.touches ||             // browser API
-    evt.originalEvent.touches; // jQuery
-}
+// function getTouches(evt) {
+//   return evt.touches ||             // browser API
+//     evt.originalEvent.touches; // jQuery
+// }
 
-function handleTouchStart(evt) {
-  if (evt.touches.length > 1) return; // ignore multi-touch
+// function handleTouchStart(evt) {
+//   if (evt.touches.length > 1) return; // ignore multi-touch
 
-  const firstTouch = getTouches(evt)[0];
-  xDown = firstTouch.clientX;
-};
+//   const firstTouch = getTouches(evt)[0];
+//   xDown = firstTouch.clientX;
+// };
 
-function handleTouchMove(evt) {
-  if (!xDown) {
-    return;
-  }
+// function handleTouchMove(evt) {
+//   if (!xDown) {
+//     return;
+//   }
 
-  var xUp = evt.touches[0].clientX;
+//   var xUp = evt.touches[0].clientX;
 
-  var xDiff = xDown - xUp;
+//   var xDiff = xDown - xUp;
 
-  if (xDiff > 0) {
-    clickNavigationButton('.next');
-  } else {
-    clickNavigationButton('.previous');
-  }
-  /* reset values */
-  xDown = null;
-};
+//   if (xDiff > 0) {
+//     clickNavigationButton('.next');
+//   } else {
+//     clickNavigationButton('.previous');
+//   }
+//   /* reset values */
+//   xDown = null;
+// };
 
 /* image sharing */
 

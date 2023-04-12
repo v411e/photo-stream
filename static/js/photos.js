@@ -21,6 +21,8 @@ function getTouches(evt) {
 }
 
 function handleTouchStart(evt) {
+  if (evt.touches.length > 1) return; // ignore multi-touch
+
   const firstTouch = getTouches(evt)[0];
   xDown = firstTouch.clientX;
 };
@@ -41,7 +43,6 @@ function handleTouchMove(evt) {
   }
   /* reset values */
   xDown = null;
-  yDown = null;
 };
 
 /* image sharing */

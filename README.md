@@ -110,6 +110,19 @@ album_date_format = "01/2006"
 
 Check the Go documentation for possible formats: [time.Format](https://golang.org/pkg/time/#Time.Format).
 
+These environment variables may be configured:
+```
+GITHUB_USERNAME="username"
+TWITTER_USERNAME="username"
+INSTAGRAM_USERNAME="username"
+CUSTOM_LINK_URL="https://example.com"
+CUSTOM_LINK_NAME="Example link"
+MASTODON_SERVER="mastodon.social"
+MASTODON_USERNAME="username"
+ALLOW_ORDER_SORT_CHANGE="1"
+ALLOW_IMAGE_SHARING="1"
+```
+
 ## Demo Website
 
 A live demo is available [at hugo-photo-stream.netlify.app](https://hugo-photo-stream.netlify.app/) but you can have a look by yourself at the example site.

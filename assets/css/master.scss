@@ -33,8 +33,7 @@
 	// 	background-color: rgba(0, 0, 0, .25);
 	// }
 	
-	&:hover,
-	&:focus {
+	&:hover {
 		background-color: rgba(200, 200, 200, .5);
 		// Disable until Safari supports `prefers-color-scheme` in SVG's
 		// @include dark {
@@ -89,7 +88,11 @@ body {
 		@include dark {
 			outline-color: #000;
 		}
-  }
+    }
+	
+	.photodetail-links {
+		display: none;
+	}
 
 	.item {
 		height: 40vh;
@@ -218,6 +221,46 @@ body {
 			opacity: 1;
 			margin-left: 12px;
 		}
+
+		.meta {
+			display: flex;
+			position: absolute;
+			right: 4px;
+			bottom: 12px;
+			color: #fff;
+			text-shadow: #000 0 1px 1px, #000 0 2px 4px;
+			opacity: .5;
+		
+			li {
+				margin-right: 12px;
+
+				.download  {
+					background-image: url(../img/icon-download.svg);
+				}
+
+				.share  {
+					background-image: url(../img/icon-share.svg);
+					cursor: pointer;
+				}
+
+				.gridview-button {
+					@include button;
+					@media not all and (hover: none) {
+						visibility: hidden;
+					}
+					background-color: rgba(200, 200, 200, .5);
+
+					&:focus,
+					&:hover {
+						background-color: rgba(200, 200, 200, .75);
+					}
+
+					&:active {
+						background-color: rgba(200, 200, 200, 1);
+					}
+				}
+			}
+		}
 		
 		// PHOTO DETAIL
 
@@ -235,6 +278,11 @@ body {
 
 			@media (prefers-color-scheme: dark) {
 				background: #000;
+			}
+
+			.photodetail-links {
+				display: flex;
+				z-index: 21;
 			}
 
 			.open {
@@ -271,8 +319,27 @@ body {
 				display: none !important;
 			}
 
+			.photoview-button {
+				height: 75px;
+				
+				span {
+
+					&:focus,
+					&:hover {
+						background-color: rgba(200, 200, 200, .5);
+					}
+
+					&:active {
+						background-color: rgba(200, 200, 200, .75);
+					}
+				}
+			}
+
 			.previous,
 			.next {
+				display: flex;
+			}
+			.download {
 				display: flex;
 			}
 		}
@@ -288,6 +355,14 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	margin-left: 16px;
+
+	&.bottom {
+		bottom: 24px;
+	}
+
+	&.top {
+		top: 24px;
+	}
 	
 	li {
 		margin-left: 8px;
@@ -301,10 +376,47 @@ body {
 				background-image: url(../img/icon-github.svg);
 			}
 		}
+
+		&.twitter {
+			a {
+				background-image: url(../img/icon-twitter.svg);
+			}
+		}
+
+		&.mastodon {
+			a {
+				background-image: url(../img/icon-mastodon.svg);
+			}
+		}
+
+		&.instagram {
+			a {
+				background-image: url(../img/icon-instagram.svg);
+			}
+		}
 		
 		&.rss {
 			a {
 				background-image: url(../img/icon-rss.svg);
+			}
+		}
+
+		&.sort {
+			a {
+				background-image: url(../img/icon-sort.svg);
+			}
+		}
+
+		&.share {
+			a {
+				cursor: pointer;
+				background-image: url(../img/icon-share.svg);
+			}
+		}
+
+		&.download {
+			a {
+				background-image: url(../img/icon-download.svg);
 			}
 		}
 		
@@ -427,4 +539,92 @@ body {
   100% {
     opacity: 1;
   }
+}
+
+// Toastify
+
+/*!
+ * Toastify js 1.12.0
+ * https://github.com/apvarun/toastify-js
+ * @license MIT licensed
+ *
+ * Copyright (C) 2018 Varun A P
+ */
+
+ .toastify {
+    padding: 12px 20px;
+    color: #ffffff;
+    display: inline-block;
+    box-shadow: 0 3px 6px -1px rgba(0, 0, 0, 0.12), 0 10px 36px -4px rgba(77, 96, 232, 0.3);
+    background: -webkit-linear-gradient(315deg, #73a5ff, #5477f5);
+    background: linear-gradient(135deg, #73a5ff, #5477f5);
+    position: fixed;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    max-width: calc(50% - 20px);
+    z-index: 2147483647;
+}
+
+.toastify.on {
+    opacity: 1;
+}
+
+.toast-close {
+    background: transparent;
+    border: 0;
+    color: white;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1em;
+    opacity: 0.4;
+    padding: 0 5px;
+}
+
+.toastify-right {
+    right: 15px;
+}
+
+.toastify-left {
+    left: 15px;
+}
+
+.toastify-top {
+    top: -150px;
+}
+
+.toastify-bottom {
+    bottom: -150px;
+}
+
+.toastify-rounded {
+    border-radius: 25px;
+}
+
+.toastify-avatar {
+    width: 1.5em;
+    height: 1.5em;
+    margin: -7px 5px;
+    border-radius: 2px;
+}
+
+.toastify-center {
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    max-width: fit-content;
+    max-width: -moz-fit-content;
+}
+
+@media only screen and (max-width: 360px) {
+    .toastify-right, .toastify-left {
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        max-width: fit-content;
+    }
 }

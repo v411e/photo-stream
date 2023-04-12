@@ -41,5 +41,10 @@
                 <span>{{ i18n "next" }}</span>
             </a>
         {{ end }}
+        <ul class="links top photodetail-links">
+            {{ if eq (os.Getenv "ALLOW_IMAGE_SHARING") "1" }}
+                <li class="share"><a onClick="shareImage('{{ $photo.Name | urlize }}');" title="Share this photo">Share</a></li>
+            {{ end }}
+        </ul>
     </li>
 {{ end }}
